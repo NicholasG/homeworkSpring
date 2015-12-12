@@ -2,6 +2,8 @@ package chapter4;
 
 import chapter4.annotation.HelloWorldMessageProvider;
 import chapter4.annotation.MessageProvider;
+import chapter4.annotation.MessageRenderer;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 /**
@@ -10,12 +12,12 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 public class DeclareSpringComponents {
 
     public static void main(String[] args) {
-        GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
-        ctx.load("classpath:app-context-annotation.xml");
-        ctx.refresh();
+        ApplicationContext ctx = new GenericXmlApplicationContext("app-context-xml.xml");
+//        ctx.load("classpath:app-context-xml.xml");
+//        ctx.refresh();
 
-        HelloWorldMessageProvider messageProvider = ctx.getBean("messageProvider", HelloWorldMessageProvider.class);
-        System.out.println(messageProvider.getMessage());
+        MessageRenderer messageRenderer = ctx.getBean("messageRenderer", MessageRenderer.class);
+        messageRenderer.render();
     }
 
 }

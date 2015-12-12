@@ -1,5 +1,6 @@
 package chapter4.annotation;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -14,13 +15,14 @@ public class StandardOutMessageRenderer implements MessageRenderer {
     public void render() {
         if (messageProvider == null) {
             throw new RuntimeException(
-                    "You must set the property messageProvider of class:"
+                    "You must set the property messageProvider of class: "
                             + StandardOutMessageRenderer.class.getName());
         }
         System.out.println(messageProvider.getMessage());
     }
 
     @Override
+    @Autowired
     public void setMessageProvider(MessageProvider provider) {
         this.messageProvider = provider;
     }

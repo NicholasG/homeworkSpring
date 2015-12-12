@@ -15,6 +15,11 @@
       <!--<bean id="messageRenderer" class="chapter2.StandardOutMessageRenderer"/>
        <bean id="messageProvider" class="chapter2.HelloWorldMessageProvider"/>-->
 
-       <bean id="messageProvider" class="chapter4.annotation.HelloWorldMessageProvider"/>
+        <bean id="messageProvider"
+             class="chapter4.annotation.HelloWorldMessageProvider"/>
+        <bean id="messageRenderer"
+              class="chapter4.annotation.StandardOutMessageRenderer"
+              p:messageProvider-ref="messageProvider"/>
+
 
 </beans>
